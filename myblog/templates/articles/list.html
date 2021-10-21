@@ -2,15 +2,22 @@
 
 {% block title %}Anything articles{% endblock %}
 {% block content %}
-<h1>List articles:</h1>
+<div class="container text-center">
+<h1>Cool articles:</h1>
 <hr>
+
     {% if latest_articles_list %}
+    
         {% for a in latest_articles_list %}
-            <a href="{% url 'articles:detail' a.id %}">{{ a.article_title }}</a>
-            <hr>
+        <div class="alert alert-success">
+            <a href="{% url 'articles:detail' a.id %}" >{{ a.article_title }}</a>
+        </div>
         {% endfor %}
+        
     {% else %}
         <p>Articles not found )=</p>
+    
     {% endif %}
-
+</div>
+</div>
 {% endblock %}

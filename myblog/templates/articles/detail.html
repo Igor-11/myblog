@@ -3,7 +3,7 @@
 {% block title %}{{article.article_title}}{% endblock %}
 
 {% block content %}
-<h2>{{ article.article_title }}</h2>
+<h2 class="container text-center">{{ article.article_title }}</h2>
 
 <p>{{ article.article_text }}</p>
 
@@ -16,10 +16,12 @@
 
 {% if latest_comments_list %}
     {% for c in latest_comments_list %}
+    <div class="alert alert-success">
         <p>
             <strong>{{ c.author_name }}</strong>
             <p>{{ c.comment_text }}</p>
         </p>
+    </div>
     {% endfor %}
 
 {% else %}
@@ -28,14 +30,15 @@
 {% endif %}
 
 <hr>
-
+<div class="container text-center">
 <form action="{% url 'articles:leave_comment' article.id %}" method="POST">
     {% csrf_token %}
     <input type="text" required placeholder="Your name" name="name"><br>
-    <textarea name="text" required placeholder="Comment text" cols="30" rows="10"></textarea><br>
 
-    <button type="submit">Leave a comment</button>
+    <textarea name="text" required placeholder="Comment text" cols="150" rows="10"></textarea><br>
+
+    <button type="submit" class="btn btn-success">Leave a comment</button>
 </form>
-
+</div>
 {% endblock %}
 
